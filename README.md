@@ -1,24 +1,20 @@
 # Stereo Visual Odometry
 
-Stereo Visual Odometry Implementation in C++ on KIITI Dataset.
+Stereo Visual Odometry Implementation in C++ on EuRoC Dataset.
 
 ### Requirements
 
 - OpenCV
 - Cmake
+- PCL
 
 ### Usage
 
-###### Manual
 ```
-mkdir build
-cd build
-cmake ..
-make
-./output -h
+mkdir data
 ```
-###### Auto
-Put the absolute path of KIITI Dataset in setup.sh file and run following.
+
+Keep the dataset in *data* folder. And run this command it will generate the executable file in build folder and run it.
 
 ```
 sudo chmod +x setup.sh
