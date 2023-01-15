@@ -9,8 +9,8 @@ int main(){
     cv::Mat leftimage,leftimage_t,rightimage,rightimage_t,disp,disp_t,depth,depth_t;
     // Utils left;
     // Utils right;
-    Utils::setPath("../data/mini/");
-    // Utils::setPath("../data/Kitti_small/");
+    // Utils::setPath("../data/mini/");
+    Utils::setPath("../data/Kitti_small/");
     Utils::readRectifyData();
     cv::Mat rep=Utils::getReprojectMat();
     Stereo::setBaseline(0.4);
@@ -18,31 +18,32 @@ int main(){
     Stereo::setFocalLength(2123.5);
     Stereo::setReprojectionMatrix(rep);
     for(int i=START;i<END;i++){
-        // if(Utils::readKITTI(leftimage,rightimage,i) && Utils::readKITTI(leftimage_t,rightimage_t,i+1)){
-        if(Utils::readERoC(leftimage,rightimage) && Utils::readERoC(leftimage_t,rightimage_t)){
-        Utils::display(leftimage,"Left");
-        // std::cout<<i<<std::endl;
-        // Utils::rectifyImage(leftimage,rightimage);
-        // Utils::rectifyImage(leftimage,rightimage);
-        Stereo::disparityCalculate(leftimage,rightimage);
-        Stereo::depthCalculate(depth);
-        // Stereo::disparityCalculate(leftimage_t,rightimage_t);
-        // Stereo::depthCalculate(depth_t);
-        // cv::imwrite("data.png",depth);
-        cv::Mat dispL=Stereo::getDisparity();
-        Utils::display(depth,"Depth");
-        // std::cout<<depth;
-        Feature::detectFeatures(leftimage);
-        // Feature::detectFeatures(leftimage_t);
-        // Feature::drawPoints(leftimage);
-        Feature::trackFeatures(leftimage,leftimage_t);
-        Feature::validateFeatures(depth,depth_t);
-        // Feature::
-        // Stereo::disparityCalculate(leftimage_t,rightimage_t);
-        // cv::Mat dispR=Stereo::getDisparity();
-        // Utils::display(dispR,"Right");
-        // depth_calculate(disp,FOCAL,BASELINE,reqM,"single",depth);
-        // Utils::display(depth);
+        if (Utils::readKITTI(leftimage, rightimage, i) && Utils::readKITTI(leftimage_t, rightimage_t, i + 1))
+        {
+            // if(Utils::readERoC(leftimage,rightimage) && Utils::readERoC(leftimage_t,rightimage_t)){
+            Utils::display(leftimage, "Left");
+            // std::cout<<i<<std::endl;
+            // Utils::rectifyImage(leftimage,rightimage);
+            // Utils::rectifyImage(leftimage,rightimage);
+            Stereo::disparityCalculate(leftimage, rightimage);
+            Stereo::depthCalculate(depth);
+            // Stereo::disparityCalculate(leftimage_t,rightimage_t);
+            // Stereo::depthCalculate(depth_t);
+            // cv::imwrite("data.png",depth);
+            cv::Mat dispL = Stereo::getDisparity();
+            Utils::display(depth, "Depth");
+            // std::cout<<depth;
+            Feature::detectFeatures(leftimage);
+            // Feature::detectFeatures(leftimage_t);
+            // Feature::drawPoints(leftimage);
+            Feature::trackFeatures(leftimage, leftimage_t);
+            Feature::validateFeatures(depth, depth_t);
+            // Feature::
+            // Stereo::disparityCalculate(leftimage_t,rightimage_t);
+            // cv::Mat dispR=Stereo::getDisparity();
+            // Utils::display(dispR,"Right");
+            // depth_calculate(disp,FOCAL,BASELINE,reqM,"single",depth);
+            // Utils::display(depth);
         }
     }
 }

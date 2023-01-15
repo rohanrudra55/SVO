@@ -9,7 +9,8 @@ bool Utils::foundCSV=0,Utils::foundXML=0;
 
 void Utils::display(cv::Mat &show_data,std::string frame){
     cv::imshow(frame,show_data);
-    if(cv::waitKey(60)==27){
+    if (cv::waitKey(60) == 27)
+    {
         cv::destroyAllWindows();
         exit(1);
     }
