@@ -1,21 +1,24 @@
 # Stereo Visual Odometry
 
-Stereo Visual Odometry Implementation in C++ on EuRoC & KITTI Dataset.
-Research Papers used for this work are in **Research** folder.
+Stereo Visual Odometry Implementation in C++ on KIITI Dataset.
 
 ### Requirements
-- C++ Compiler
+
 - OpenCV
 - Cmake
-- PCL
 
 ### Usage
 
+###### Manual
 ```
-mkdir data
+mkdir build
+cd build
+cmake ..
+make
+./output -h
 ```
-
-Keep the dataset in *data* folder. And run this command it will generate the executable file in build folder and run it.
+###### Auto
+Put the absolute path of KIITI Dataset in setup.sh file and run following.
 
 ```
 sudo chmod +x setup.sh
@@ -28,10 +31,10 @@ sudo chmod +x setup.sh
 
 Image Calibration
 
-To calibrate camera parameters  take a picture of the  $7*9$ chessboard from your camera and keep the  ' *Image.jpg* ' in the **data** folder or specify the path  and run the `Helper.py` file in **src**. It will save the data in `parameters.txt` in **src** folder. By default you can use the chessboard in data folder or you can specify the path of your own files.
+To calibrate camera parameters  take a picture of the  $7*9$ chessboard from your camera and keep the  ' *Image.jpg* ' in the **data** folder or specify the path  and run the `*Helper.py*` file in **src**. It will save the data in `*parameters.txt*` in **src** folder. By default you can use the chessboard in data folder or you can specify the path of your own files.
 
 ### Requirements
-- python3.8
+
 - OpenCV
 - Numpy
 - Matplotlib

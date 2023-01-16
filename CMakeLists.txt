@@ -4,20 +4,24 @@ find_package( OpenCV REQUIRED )
 include_directories((include))
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 file(GLOB SOURCES "src/*.cpp")
-add_executable(output  ${SOURCES} )
+add_executable(output  ${SOURCES}  )
 target_link_libraries( output ${OpenCV_LIBS})
 message(
     "
+                                             @@@        @   @@@                                 
+                                              @@@      @@@ @@@                                  
+                                               (@@    @@@@@@@                                   
+                                                 @@  @@@ @@@                                    
+                                                  @@@@@ @@@@@                                   
+                                                   @@@ @@@ @@@                                  
+                                                  @@@@@@@   @@@                                 
+                                                 @@@ @@%     *@@                                
 
-    
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
+                                     @@@  @ @   @  @ @@@    @        %@    @                    
+                                      @   &  @ @   @ @ @   @ @      @& @   @                    
+                                      @   &   @    @   @  @   @    @,   @  @                    
 
-"
+                                                  TiVRA AI     
+    "
 )

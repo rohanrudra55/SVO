@@ -1,52 +1,43 @@
-// #include"camera.h"
+// #include "include/rigid.h"
 
-// int main(int argc,char *argv[]){
-//     // processing arguments
-//     char choice='d';
-//     std::string left_dir,right_dir;
-//     if(argc>1)
-//     char choice=(argv[1])[1];
-//     switch(choice){
-//         case 'h':
-//             std::cout<<"-h for help\n-d to run with default data\n-m to run with manual data\n"<<std::endl;
-//             break;
-//         case 'd':
-//             left_dir="../resource/mini/cam0/data/image";
-//             right_dir="../resource/mini/cam1/data/image";
-//             break;
-//         case 'm':
-//             std::cout<<"Enter left directory path:\t";
-//             std::cin>>left_dir;
-//             std::cout<<"Enter right directory path:\t";
-//             std::cin>>right_dir;
-//         default:
+
+// namespace SVO{
+//     bool Estimate::stereoPNPtrack(){
+//         cv::Mat rotation = cv::Mat::eye(3, 3, CV_64F);
+//         cv::Mat translation = cv::Mat::zeros(3, 1, CV_64F);
+//         cv::Mat delta_translation = cv::Mat::zeros(3, 1, CV_64F);
+//         cv::Mat distCoeffs = cv::Mat::zeros(4, 1, CV_64FC1);
+//         cv::Mat rvec = cv::Mat::zeros(3, 1, CV_64FC1);
+//         cv::Mat inliers;
+
+//         cv::solvePnPRansac(points3D_t1, matched_t2_left, intrinsic_matrix, distCoeffs, rvec, translation,
+//                         useExtrinsicGuess, iterationsCount, reprojectionError, confidence,
+//                         inliers, flags);
+//         cv::Rodrigues(rvec, rotation);
+
+//         cv::Mat rigid_body_transformation;
+//         cv::Mat addup = (cv::Mat_<double>(1, 4) << 0, 0, 0, 1);
+//         cv::hconcat(rotation, translation, rigid_body_transformation);
+//         cv::vconcat(rigid_body_transformation, addup, rigid_body_transformation);
+//         rigid_body_transformation = rigid_body_transformation.inv();
+//         frame_pose_ = frame_pose_ * rigid_body_transformation;
+        
+//         // displayTracking(current_frame_->left_img_, matched_t1_left, matched_t2_left);
+
+//         cv::Mat xyz = frame_pose_.col(3).clone();
+//         double Px__ = xyz.at<double>(0);
+//         double Pz__ = xyz.at<double>(2);
+//         double Py__ = xyz.at<double>(1);
+
+//         int x = (int)(Px__ * 1) + 400;
+//         int y = (int)(Pz__ * 1) + 200;
+//         circle(trajectory_, cv::Point(x, y), 1, CV_RGB(0, 0, 255), 2);
+//         cv::imshow("Trajectory", trajectory_);
+//         if(cv::waitKey(1)==27){
+//             cv::destroyAllWindows();
+//             exit(1);
+//         }
+
+//         return true;
 //     }
-
-
-//     stereo images;
-//     features left_compute,right_compute;
-//     extrinct left,right;
-//     // read_parameters(left_camera,initial_left_camera,'l');
-//     // read_parameters(right_camera,initial_right_camera,'r');
-//     cv::Mat matched,mask;
-//     std::vector<cv::DMatch>  matches1to2;
-//     char left_path[60];
-//     char right_path[60];
-    
-//     for(int i=1;i<45;i++){
-//         sprintf(left_path,"%s%05d%s",left_dir,i,".png");
-//         std::cout<<left_path<<std::endl;
-//         sprintf(right_path,"%s%05d%s",right_dir,i,".png");
-//         images.left=cv::imread(left_path,cv::IMREAD_GRAYSCALE);
-//         images.right=cv::imread(right_path,cv::IMREAD_GRAYSCALE);
-//         detect_features(images.left,left_compute);
-//         // calculateExtrinctParameters(left,left_compute);
-//         detect_features(images.right,right_compute);
-//         // calculateExtrinctParameters(left,right_compute);
-//         // std::cout<<images;
-//         cv::imshow("Matched",matched);
-//         if (cv::waitKey(50) == 27){
-// 			std::cout << "Esc key is pressed by user. Stoppig the video" << std::endl;
-// 			break;
-// 			}
-//     }
+// }
