@@ -108,17 +108,17 @@ int Feature::trackMultiImageFeatures(std::vector<cv::Point2f> &currenrLeftPoints
 
         cv::cvtColor(currentLeftImage, visualize, cv::COLOR_GRAY2BGR, 3);
 
-        for (size_t i = 0; i < previousLeftPoints.size(); i++)
+        for (size_t i = 0; i < previousLeftPoints.size() / 2; i++)
         {
             cv::circle(visualize, cv::Point(previousLeftPoints[i].x, previousLeftPoints[i].y), radius, CV_RGB(0, 255, 0));
         }
 
-        for (size_t i = 0; i < currentLeftPoints.size(); i++)
+        for (size_t i = 0; i < currentLeftPoints.size() / 2; i++)
         {
             cv::circle(visualize, cv::Point(currentLeftPoints[i].x, currentLeftPoints[i].y), radius, CV_RGB(255, 0, 0));
         }
 
-        for (size_t i = 0; i < currentLeftPoints.size(); i++)
+        for (size_t i = 0; i < currentLeftPoints.size() / 2; i++)
         {
             cv::line(visualize, previousLeftPoints[i], currentLeftPoints[i], CV_RGB(0, 255, 0));
         }

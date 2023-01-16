@@ -17,5 +17,6 @@ while ((NEXT))
             rm -r build
             NEXT=0
         fi
+        cd ..
     shift
 done

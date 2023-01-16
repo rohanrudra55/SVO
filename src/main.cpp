@@ -1,6 +1,6 @@
 
 #include "../include/system.h"
-#define AUTO
+// #define AUTO
 
 #ifdef AUTO
 int main(int argc, char **argv)
@@ -43,9 +43,10 @@ int main(int argc, char **argv)
 {
     std::cout << "\033[2J\033[1;1H" << std::endl;
     static SVO::System compute;
-    std::cout << BLUE << "Type -h for more options" << RESET << std::endl;
+    std::cout << GREEN << "Type -h for more options" << RESET << std::endl;
     // TO USE IN THIS MODE SET THE DATASET ABSOLUTE PATH HERE
     compute.setDataPath("/Users/alpha/Downloads/2011_09_26/2011_09_26_drive_0001_sync");
+    compute.showRealTimeTracking();
     compute.runSVO();
 }
 
