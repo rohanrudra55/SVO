@@ -9,11 +9,11 @@ bool Utils::foundCSV=0,Utils::foundXML=0;
 
 void Utils::display(cv::Mat &show_data,std::string frame){
     cv::imshow(frame,show_data);
-    if (cv::waitKey(60) == 27)
-    {
-        cv::destroyAllWindows();
-        exit(1);
-    }
+    // if (cv::waitKey(60) == 27)
+    // {
+    //     cv::destroyAllWindows();
+    //     // exit(1);
+    // }
 }
 //======================================================================
 
@@ -115,8 +115,8 @@ bool Utils::readKITTI(cv::Mat &image,int number){
 bool Utils::readKITTI(cv::Mat &imagel,cv::Mat &imager,int number){
     std::string finalPathl,finalPathr;
     // std::cout<<number;
-    char p[7];
-    sprintf(p,"%06d",number);
+    char p[10];
+    sprintf(p, "%07d", number);
     finalPathl=path+"left/"+p+".png";
     finalPathr=path+"right/"+p+".png";
     // std::cout<<finalPathl<<std::endl;

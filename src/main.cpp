@@ -1,16 +1,16 @@
 #include "../include/utils.h"
 #include "../include/stereo.h"
 #include "../include/feature.h"
-#define START 0
-#define END 90
+#define START 300
+#define END 360
 #define FOCAL 781
 #define BASELINE 0.4
 int main(){
     cv::Mat leftimage,leftimage_t,rightimage,rightimage_t,disp,disp_t,depth,depth_t;
     // Utils left;
     // Utils right;
-    // Utils::setPath("../data/mini/");
-    Utils::setPath("../data/Kitti_small/");
+    Utils::setPath("../data/mini/");
+    // Utils::setPath("../data/Kitti_small/");
     Utils::readRectifyData();
     cv::Mat rep=Utils::getReprojectMat();
     Stereo::setBaseline(0.4);
@@ -18,9 +18,10 @@ int main(){
     Stereo::setFocalLength(2123.5);
     Stereo::setReprojectionMatrix(rep);
     for(int i=START;i<END;i++){
-        if (Utils::readKITTI(leftimage, rightimage, i) && Utils::readKITTI(leftimage_t, rightimage_t, i + 1))
+        // if (Utils::readKITTI(leftimage, rightimage, i) && Utils::readKITTI(leftimage_t, rightimage_t, i + 1))
+        // {
+        if (Utils::readERoC(leftimage, rightimage) && Utils::readERoC(leftimage_t, rightimage_t))
         {
-            // if(Utils::readERoC(leftimage,rightimage) && Utils::readERoC(leftimage_t,rightimage_t)){
             Utils::display(leftimage, "Left");
             // std::cout<<i<<std::endl;
             // Utils::rectifyImage(leftimage,rightimage);
