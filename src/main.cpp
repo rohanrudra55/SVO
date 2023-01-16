@@ -11,22 +11,22 @@ int main(int argc, char **argv){
     if(argc>1){
         if(std::string(argv[1])=="-h"){
             std::cout<<GREEN<<"***WELCOME***\n"<<RESET<<"1) "<<RED<<"-h"<<RESET<<BLUE<<"\t\tHelp Menu\n"<<RESET<<"2) "<<RED<<"/.../"<<RESET<<BLUE<<"\tAbsolute Kitti Dataset path\n"<<RESET<<"3) "<<RED<<"t"<<RESET<<BLUE<<"\t\tView Tracking"<<RESET<<std::endl;
-            return 1;
+            // return 1;
         }
-        else{
-            compute.setDataPath(std::string(argv[1]));
-        }
-        if(argc==3){
-            if(std::string(argv[2])=="t")
-                compute.showRealTimeTracking();
-            else
-                return 1;
-        }    
+        // else{
+        //     compute.setDataPath(std::string(argv[1]));
+        // }
+        // if(argv[1]==){
+        if (std::string(argv[1]) == "-t")
+            compute.showRealTimeTracking();
+        // else
+        // return 1;
+        // }
     }
-    else{
-        std::cout<<"If this is not on Rohan's Computer then set data path"<<std::endl;
-        return 1;
-    }
+    // else{
+    //     std::cout<<"If this is not on Rohan's Computer then set data path"<<std::endl;
+    //     return 1;
+    // }
     compute.runSVO();
     return 0;
 }

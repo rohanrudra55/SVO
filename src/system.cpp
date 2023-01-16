@@ -16,17 +16,19 @@ namespace SVO{
         cv::Mat points3D;
         cv::Mat intrinsicMat;
         bool status1=true;
-        // readImage.setPath("/Users/alpha/Downloads/dataset/08/");
-        readImage.setPath(dataPath);
+        readImage.setPath("/Users/alpha/Downloads/2011_09_26/2011_09_26_drive_0001_sync");
+        // readImage.setPath(dataPath);
         // stereoTriangulate.setLeftProjectionMatrix((cv::Mat_<double>(3,4)<<718.856, 0, 607.193, 0,0, 718.856, 185.216, 0,0, 0, 1, 0));
         // stereoTriangulate.setRightProjectionMatrix((cv::Mat_<double>(3,4)<<718.856, 0, 607.193, -386.02567,0, 718.856, 185.216, 0,0, 0, 1, 0));
         stereoTriangulate.getIntrinsicMatrix(intrinsicMat);
-        if(readImage.readKITTI(leftimage,rightimage,imageCount)){
+        if (readImage.readKITTI(leftimage, rightimage, imageCount))
+        {
             trackFeatures.setFrame(leftimage,rightimage);
             if(initialStep){
                 trackFeatures.detectFeatures();
                 initialStep=false;
             }
+
             else{
                 trackFeatures.detectFeatures();
                 trackFeatures.getLastPoints(matched_t1_left);
@@ -42,7 +44,7 @@ namespace SVO{
             }
             trackFeatures.alterFrame();
             imageCount++;
-    }
+        }
     else
         return false;
 
