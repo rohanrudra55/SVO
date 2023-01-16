@@ -1,10 +1,8 @@
 
 #include "../include/system.h"
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-#define BLUE "\033[34m"
-#define RESET "\033[0m"
+#define AUTO
+
+#ifdef AUTO
 int main(int argc, char **argv)
 {
     std::cout << "\033[2J\033[1;1H" << std::endl;
@@ -15,24 +13,40 @@ int main(int argc, char **argv)
         {
             std::cout << GREEN << "***WELCOME***\n"
                       << RESET << "1) " << RED << "-h" << RESET << BLUE << "\t\tHelp Menu\n"
-                      << RESET << "2) " << RED << "/.../" << RESET << BLUE << "\tAbsolute Kitti Dataset path\n"
-                      << RESET << "3) " << RED << "t" << RESET << BLUE << "\t\tView Tracking" << RESET << std::endl;
-            // return 1;
+                      << RESET << "2) " << RED << "-d" << RESET << BLUE << "\tAbsolute Kitti Dataset path\n"
+                      << RESET << "3) " << RED << "-t" << RESET << BLUE << "\t\tView Tracking" << RESET << std::endl;
         }
-        // else{
-        //     compute.setDataPath(std::string(argv[1]));
-        // }
-        // if(argv[1]==){
-        if (std::string(argv[1]) == "-t")
-            compute.showRealTimeTracking();
-        // else
-        // return 1;
-        // }
+
+        else
+        {
+            if (std::string(argv[1]) == "-d")
+            {
+                compute.setDataPath(std::string(argv[2]));
+            }
+            if (std::string(argv[1]) == "-t" || std::string(argv[3]) == "-t")
+            {
+                std::cout << GREEN << "Enabling Tracking Viewer" << RESET << std::endl;
+                compute.showRealTimeTracking();
+            }
+            compute.runSVO();
+        }
     }
-    // else{
-    //     std::cout<<"If this is not on Rohan's Computer then set data path"<<std::endl;
-    //     return 1;
-    // }
-    compute.runSVO();
+    else
+    {
+        std::cout << BLUE << "Type -h for HELP" << RESET << std::endl;
+    }
     return 0;
 }
+#else
+
+int main(int argc, char **argv)
+{
+    std::cout << "\033[2J\033[1;1H" << std::endl;
+    static SVO::System compute;
+    std::cout << BLUE << "Type -h for more options" << RESET << std::endl;
+    // TO USE IN THIS MODE SET THE DATASET ABSOLUTE PATH HERE
+    compute.setDataPath("/Users/alpha/Downloads/2011_09_26/2011_09_26_drive_0001_sync");
+    compute.runSVO();
+}
+
+#endif

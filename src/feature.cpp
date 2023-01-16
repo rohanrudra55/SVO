@@ -2,18 +2,18 @@
 namespace SVO{
 void Feature::detectFeatures(){
     if(useORB){
-    //ORB DETECTOR
-    // cv::Ptr<cv::ORB>ditector=cv::ORB::create();
-    // ditector->setMaxFeatures(1000);
-    // ditector->setScaleFactor(1.2f);
-    // ditector->setNLevels(8);
-    // ditector->setEdgeThreshold(31);
-    // ditector->setFirstLevel(0);
-    // ditector->setWTA_K(2);
-    // ditector->setScoreType(cv::ORB::HARRIS_SCORE);
-    // ditector->setPatchSize(31);
-    // ditector->setFastThreshold(20);
-    // ditector->detect(image,detected_features);
+    // ORB DETECTOR
+    cv::Ptr<cv::ORB>ditector=cv::ORB::create();
+    ditector->setMaxFeatures(1000);
+    ditector->setScaleFactor(1.2f);
+    ditector->setNLevels(8);
+    ditector->setEdgeThreshold(31);
+    ditector->setFirstLevel(0);
+    ditector->setWTA_K(2);
+    ditector->setScoreType(cv::ORB::HARRIS_SCORE);
+    ditector->setPatchSize(31);
+    ditector->setFastThreshold(20);
+    ditector->detect(current.leftImage,current.keypoints);
     }
     else{
     //FAST DETECTOR
@@ -58,12 +58,10 @@ void Feature::deleteBadMatchFeatures(std::vector<cv::Point2f> &points0, std::vec
             points2.erase(points2.begin() + (i - indexCorrection));
             points3.erase(points3.begin() + (i - indexCorrection));
             points0_return.erase(points0_return.begin() + (i - indexCorrection));
-            // removed++;
 
             indexCorrection++;
         }
     }
-    // std::cout<<removed<<std::endl;
 }
 int Feature::trackMultiImageFeatures(std::vector<cv::Point2f> &currenrLeftPoints,std::vector<cv::Point2f> &currenrRightPoints,
                                     std::vector<cv::Point2f> &previousLeftPoints,std::vector<cv::Point2f> &previousRightPoints){
@@ -103,7 +101,7 @@ int Feature::trackMultiImageFeatures(std::vector<cv::Point2f> &currenrLeftPoints
 }
     void Feature::displayTracking(cv::Mat &currentLeftImage,std::vector<cv::Point2f> &previousLeftPoints,std::vector<cv::Point2f> &currentLeftPoints){
         // -----------------------------------------
-        // Display feature racking
+        // DISPLAY TRACKING FEATURE
         // -----------------------------------------
         int radius = 2;
         cv::Mat visualize;

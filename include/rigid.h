@@ -5,7 +5,7 @@
 // #include<Eigen/Dense>
 #endif
 // cv::Mat framePose = cv::Mat::eye(4, 4, CV_64F);
-    // cv::Mat trajectoryImage = cv::Mat::zeros(600, 1200, CV_8UC3);
+// cv::Mat trajectoryImage = cv::Mat::zeros(600, 1200, CV_8UC3);
 namespace SVO{
     static cv::Mat  framePose = cv::Mat::eye(4, 4, CV_64F);
     static cv::Mat  trajectoryImage = cv::Mat::zeros(600, 1200, CV_8UC3);
@@ -54,9 +54,9 @@ namespace SVO{
         public:
         Estimate(){
             inlier_rate_=0.01;
-            iterationsCount = 500;       // number of Ransac iterations.
+            iterationsCount = 500;    // number of Ransac iterations.
             reprojectionError = 0.5; // maximum allowed distance to consider it an inlier.
-            confidence = 0.99;               // RANSAC successful confidence.
+            confidence = 0.99;      // RANSAC successful confidence.
             useExtrinsicGuess = true;
             flags = cv::SOLVEPNP_ITERATIVE;
             initialPosition=true;
