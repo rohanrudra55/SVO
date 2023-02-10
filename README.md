@@ -24,16 +24,12 @@ Put the absolute path of KIITI Dataset in setup.sh file and run following.
 sudo chmod +x setup.sh
 ./setup.sh
 ```
-*Incase of `ERROR : header file not found` edit `.vscode/c_cpp_properties.json`*
+
+**Incase of `ERROR : header file not found` edit `.vscode/c_cpp_properties.json`**
+
 ---
-
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6wEz8SlAyjg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-
-
+Watch [video](https://www.youtube.com/embed/6wEz8SlAyjg)
+---
 ---
 
 Image Calibration
